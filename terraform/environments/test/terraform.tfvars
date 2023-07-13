@@ -1,13 +1,13 @@
 # Azure subscription vars
-subscription_id = ""
-client_id = ""
-client_secret = ""
-tenant_id = ""
+subscription_id = "3a6309cd-4468-4064-8659-d7f57ad9bbed"
+client_id = "2de85303-e338-47a3-b2db-d790cac6e855"
+client_secret = "0DF8Q~P1yXFygz1JKy5GgnbdigbGzw98vbPsQboc"
+tenant_id = "dc355276-756b-4766-9375-8dc6ed86483d"
 
 # Resource Group/Location
-location = ""
-resource_group_name = ""
-application_type = ""
+location = "East US"
+resource_group_name = "UdacityTrainAzureDevOps"
+application_type = "myApplication-mm"
 
 # Network
 virtual_network_name = ""
