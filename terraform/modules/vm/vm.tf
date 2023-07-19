@@ -18,7 +18,7 @@ resource "tls_private_key" "test" {
 }
 
 data "azurerm_image" "test" {
-  name                = "UdacityTraingVMImageDef (UdacityTraingVMImageGallery/UdacityTraingVMImageDef)"
+  name                = "/subscriptions/3a6309cd-4468-4064-8659-d7f57ad9bbed/resourceGroups/udacityTrainMsDevOpsVM-rg/providers/Microsoft.Compute/galleries/UdacityTraingVMImageGallery/images/UdacityTraingVMImageDef"
   resource_group_name = "udacityTrainMsDevOpsVM-rg"
 }
 resource "azurerm_linux_virtual_machine" "test" {
