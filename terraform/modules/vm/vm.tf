@@ -45,8 +45,5 @@ resource "azurerm_linux_virtual_machine" "test" {
     version   = "latest"
   }
   */
-    storage_image_reference {
-    id = data.azurerm_image.test.id
-  }
-
+  source_image_id = data.azurerm_image.test.id
 }
