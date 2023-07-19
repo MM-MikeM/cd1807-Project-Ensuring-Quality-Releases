@@ -17,6 +17,10 @@ resource "tls_private_key" "test" {
   rsa_bits  = 4096
 }
 
+data "azurerm_image" "test" {
+  name                = "UdacityTraingVMImageDef"
+  resource_group_name = "udacityTrainMsDevOpsVM-rg"
+}
 resource "azurerm_linux_virtual_machine" "test" {
   name                  = "${var.application_type}-${var.resource_type}"
   location              = "${var.location}"
@@ -33,10 +37,16 @@ resource "azurerm_linux_virtual_machine" "test" {
     caching           = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
+  /*
   source_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
     sku       = "18.04-LTS"
     version   = "latest"
   }
+  */
+    storage_image_reference {
+    id = data.azurerm_image.test.id
+  }
+
 }
