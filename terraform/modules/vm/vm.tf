@@ -16,6 +16,15 @@ resource "tls_private_key" "test" {
   algorithm = "RSA"
   rsa_bits  = 4096
 }
+data "azurerm_resource_group" "vmimage" {
+  name = "udacityTrainMsDevOpsVM-rg"
+}
+data "azurerm_shared_image_version" "vmimage" {
+  name                = "1.0.0"
+  image_name          = "UdacityTraingVMImageDef"
+  gallery_name        = "UdacityTraingVMImageGallery"
+  resource_group_name = data.azurerm_resource_group.vmimage.name
+}
 resource "azurerm_linux_virtual_machine" "test" {
   name                  = "${var.application_type}-${var.resource_type}"
   location              = "${var.location}"
@@ -24,6 +33,7 @@ resource "azurerm_linux_virtual_machine" "test" {
   admin_username        = "adminuser"
   disable_password_authentication = true
   network_interface_ids = [azurerm_network_interface.test.id]
+  source_image_id = data.azurerm_shared_image_version.vmimage.id
   admin_ssh_key {
     username   = "adminuser"
     public_key = tls_private_key.test.public_key_openssh
@@ -32,10 +42,12 @@ resource "azurerm_linux_virtual_machine" "test" {
     caching           = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
+  /*
   source_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
     sku       = "18.04-LTS"
     version   = "latest"
   }
+  */
 }
