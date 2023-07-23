@@ -116,10 +116,15 @@ stages:
         workingDirectory: '$(System.DefaultWorkingDirectory)/automatedtesting/postman'
     # Postman - Publish Results 
     # ToDo: Complete the task as explained here: https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/test/publish-test-results?view=azure-devops&tabs=trx%2Cyaml#yaml-snippet
+    steps:
+    - script: |
+      echo "##vso[task.setvariable variable=testRunDate;]$(date +%Y%m%d-%H%M%S)"
+      displayName: 'Set date variable'
+    
     - task: PublishTestResults@2
       inputs:
         testResultsFormat: 'JUnit'
         testResultsFiles: '**/TEST-*.xml'
-        searchFolder:       # ToDo
+        searchFolder: '$(System.DefaultWorkingDirectory)/automatedtesting/postman' # ToDo
         mergeTestResults: true
-        testRunTitle:       # ToDo
+        testRunTitle: 'TestSuite Results - $(testRunDate)' # ToDo
