@@ -125,4 +125,4 @@ stages:
         testResultsFiles: '**/TEST-*.xml'
         searchFolder: '$(System.DefaultWorkingDirectory)/automatedtesting/postman' # ToDo
         mergeTestResults: true
-        testRunTitle: 'TestSuite Results - $(testRunDate)' # ToDo
+        testRunTitle: 'TestSuite Results - $(testRunDate) UTC' # ToDo
