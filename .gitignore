@@ -23,3 +23,7 @@ override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
+
+!TestSuite-UdacityTrain-MSDevOps-Data-Validation.postman_collection.json
+!TestSuite-UdacityTrain-MSDevOps-Regression.postman_collection.json
+!UdacityTrain_MSDevOps_TestSuite_Env.postman_environment.json
