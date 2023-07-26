@@ -174,23 +174,23 @@ stages:
 #--------------------------------------------#  
 # DEPLOYMENT STAGE
 #--------------------------------------------#    
-- stage: Deploy
-  jobs:
-  #--------------------------------------------#  
+# - stage: Deploy
+#   jobs:
+  # --------------------------------------------#  
   # Deploy FakeRestAPI Web App
   # ToDo: Provide <environment name> you created in your DevOps project
-  - deployment: FakeRestAPI
-    pool:
-      vmImage: 'ubuntu-latest'      
-    environment: 'udacityTrainMsDevOps-vm-env'   # ToDo
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - task: AzureWebApp@1
-            displayName: 'Deploy Azure Web App'
-            inputs:
-              azureSubscription: 'Udactiy_Train_MSDevOps_SvcConection'     # ToDo
-              appName: 'FakeRestAPIWebApp'               # ToDo
-              appType: webApp
-              package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip       # ToDo: Use the published zip artifact.
+  # - deployment: FakeRestAPI
+  #   pool:
+  #     vmImage: 'ubuntu-latest'      
+  #   environment: 'udacityTrainMsDevOps-vm-env'   # ToDo
+  #   strategy:
+  #     runOnce:
+  #       deploy:
+  #         steps:
+  #         - task: AzureWebApp@1
+  #           displayName: 'Deploy Azure Web App'
+  #           inputs:
+  #             azureSubscription: 'Udactiy_Train_MSDevOps_SvcConection'     # ToDo
+  #             appName: 'FakeRestAPIWebApp'               # ToDo
+  #             appType: webApp
+  #             package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip       # ToDo: Use the published zip artifact.
