@@ -192,5 +192,5 @@ stages:
             inputs:
               azureSubscription: 'Udactiy_Train_MSDevOps_SvcConection'     # ToDo
               appName: 'myApplication-mm-AppSvc'               # ToDo
-              appType: webApp
+              appType: 'webAppLinux'
               package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip       # ToDo: Use the published zip artifact.
