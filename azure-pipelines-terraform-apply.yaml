@@ -181,7 +181,7 @@ stages:
   # ToDo: Provide <environment name> you created in your DevOps project
   - deployment: FakeRestAPI
     pool:
-      vmImage: 'Ubuntu-18.04'      
+      vmImage: 'UdacityTraingVMImageDef'      
     environment: 'udacityTrainMsDevOps-vm-env'   # ToDo
     strategy:
       runOnce:
