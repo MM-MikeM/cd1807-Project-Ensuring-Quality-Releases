@@ -190,7 +190,7 @@ stages:
           - task: AzureWebApp@1
             displayName: 'Deploy Azure Web App'
             inputs:
-              azureSubscription: '3a6309cd-4468-4064-8659-d7f57ad9bbed'     # ToDo
+              azureSubscription: 'Udactiy_Train_MSDevOps_SvcConection'     # ToDo
               appName: 'FakeRestAPIWebApp'               # ToDo
               appType: webApp
               package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip       # ToDo: Use the published zip artifact.
