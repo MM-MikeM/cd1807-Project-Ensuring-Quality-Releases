@@ -182,7 +182,7 @@ stages:
   - deployment: FakeRestAPI
     pool:
       vmImage: 'Ubuntu-18.04'      
-    environment: udacityTrainMsDevOps-vm-env   # ToDo
+    environment: 'udacityTrainMsDevOps-vm-env'   # ToDo
     strategy:
       runOnce:
         deploy:
