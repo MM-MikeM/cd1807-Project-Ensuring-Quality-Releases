@@ -193,4 +193,4 @@ stages:
               azureSubscription: 'Udactiy_Train_MSDevOps_SvcConection2'     # ToDo
               appName: 'myApplication-mm-AppSvc'               # ToDo
               appType: 'webApp'
-              package: '$(Pipeline.Workspace)/drop-fakerestapi/$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-perftests.zip'       # ToDo: Use the published zip artifact.
+              package: '$(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip'       # ToDo: Use the published zip artifact.
