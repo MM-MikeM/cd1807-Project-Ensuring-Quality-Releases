@@ -171,6 +171,36 @@ stages:
       displayName: 'Upload Package'
       artifact: drop-perftests
 
+                #--------------------------------------------#  
+    # JMeter (Performance) Test Suite - Archive
+    # ToDo: Complete the ArchiveFiles@2 task and publish step 
+    - task: ArchiveFiles@2
+      displayName: 'Archive CSV File EnduranceUsers1-10.csv'
+      inputs:
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/jmeter/EnduranceUsers1-10.csv'
+        includeRootFolder: false
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-csvfile1.zip'
+    # JMeter Test Suite - Publish    
+    - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-csvfile1.zip
+      displayName: 'Upload Package'
+      artifact: drop-perftests
+
+          #--------------------------------------------#  
+    # JMeter (Performance) Test Suite - Archive
+    # ToDo: Complete the ArchiveFiles@2 task and publish step 
+    - task: ArchiveFiles@2
+      displayName: 'Archive CSV File StressUsers1-20.csv'
+      inputs:
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/jmeter/StressUsers1-20.csv'
+        includeRootFolder: false
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-csvfile2.zip'
+    # JMeter Test Suite - Publish    
+    - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-csvfile2.zip
+      displayName: 'Upload Package'
+      artifact: drop-perftests
+
 #--------------------------------------------#  
 # DEPLOYMENT STAGE
 #--------------------------------------------#    
@@ -194,7 +224,16 @@ stages:
               appName: 'myApplication-mm-AppSvc'               # ToDo
               appType: 'webApp'
               package: '$(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip'       # ToDo: Use the published zip artifact.
-          #--------------------------------------------#    
+          #--------------------------------------------#  
+          # Upload CSV File to workingDirectory: $(Pipeline.Workspace)/drop-perftests
+          - task: CmdLine@2
+            inputs:
+              script: |
+                unzip -o $(Build.BuildId)-csvfile1.zip
+                unzip -o $(Build.BuildId)-csvfile2.zip
+
+              workingDirectory: $(Pipeline.Workspace)/drop-perftests           # ToDo: Use the artifact name from the task above
+          #--------------------------------------------#   
           # Run JMeter test suite against the App Service
           - task: CmdLine@2
             inputs:
