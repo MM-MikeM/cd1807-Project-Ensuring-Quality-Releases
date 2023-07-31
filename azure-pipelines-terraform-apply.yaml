@@ -260,7 +260,7 @@ stages:
   - deployment: VMDeploy
     displayName: Selenium Tests
     environment: 'udacityTrainMsDevOps-vm-env'
-      name:  'udacityTrainMsDevOps-vm' # ToDo: Change/provide a name
+      name: 'udacityTrainMsDevOps-vm' # ToDo: Change/provide a name
       resourceType: VirtualMachine
       tags: selenium
     strategy:
