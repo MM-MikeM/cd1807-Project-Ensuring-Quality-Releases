@@ -259,8 +259,8 @@ stages:
   # ToDo: 
   - deployment: VMDeploy
     displayName: Selenium Tests
-    environment:
-      name: 'udacityTrainMsDevOps-vm' # ToDo: Change/provide a name
+    environment: 'udacityTrainMsDevOps-vm-env'
+      name: 'ubuntu-latest' # ToDo: Change/provide a name
       resourceType: VirtualMachine
       tags: selenium
     strategy:
