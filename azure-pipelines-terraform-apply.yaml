@@ -184,7 +184,7 @@ stages:
     # JMeter Test Suite - Publish    
     - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-csvfile1.zip
       displayName: 'Upload Package'
-      artifact: drop-perftests
+      artifact: drop-csvfile1
 
           #--------------------------------------------#  
     # JMeter (Performance) Test Suite - Archive
@@ -199,7 +199,7 @@ stages:
     # JMeter Test Suite - Publish    
     - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-csvfile2.zip
       displayName: 'Upload Package'
-      artifact: drop-perftests
+      artifact: drop-csvfile2
 
 #--------------------------------------------#  
 # DEPLOYMENT STAGE
@@ -225,15 +225,24 @@ stages:
               appType: 'webApp'
               package: '$(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip'       # ToDo: Use the published zip artifact.
           #--------------------------------------------#  
-          # Upload CSV File to workingDirectory: $(Pipeline.Workspace)/drop-perftests
+          # Upload CSV File 1 to workingDirectory: $(Pipeline.Workspace)/drop-csvfile1
           - task: CmdLine@2
             inputs:
               script: |
                 unzip -o $(Build.BuildId)-csvfile1.zip
+
+              workingDirectory: $(Pipeline.Workspace)/drop-csvfile1           # ToDo: Use the artifact name from the task above
+
+          #--------------------------------------------#  
+          # Upload CSV File 2 to workingDirectory: $(Pipeline.Workspace)/drop-csvfile2  
+          - task: CmdLine@2
+            inputs:
+              script: |
                 unzip -o $(Build.BuildId)-csvfile2.zip
 
-              workingDirectory: $(Pipeline.Workspace)/drop-perftests           # ToDo: Use the artifact name from the task above
+              workingDirectory: $(Pipeline.Workspace)/drop-csvfile2           # ToDo: Use the artifact name from the task above
           #--------------------------------------------#   
+          
           # Run JMeter test suite against the App Service
           - task: CmdLine@2
             inputs:
