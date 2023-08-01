@@ -120,6 +120,7 @@ stages:
     # Postman - Publish Results 
     # ToDo: Complete the task as explained here: https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/test/publish-test-results?view=azure-devops&tabs=trx%2Cyaml#yaml-snippet
     - task: PublishTestResults@2
+      displayName: Publish Postman Results
       inputs:
         testResultsFormat: 'JUnit'
         testResultsFiles: '**/TEST-*.xml'
@@ -227,6 +228,7 @@ stages:
           #--------------------------------------------#  
           # Upload CSV File 1 to workingDirectory: $(Pipeline.Workspace)/drop-csvfile1
           - task: CmdLine@2
+            displayName: Upload Variables CSV File 1
             inputs:
               script: |
                 unzip -o $(Build.BuildId)-csvfile1.zip
@@ -236,6 +238,7 @@ stages:
           #--------------------------------------------#  
           # Upload CSV File 2 to workingDirectory: $(Pipeline.Workspace)/drop-csvfile2  
           - task: CmdLine@2
+            displayName: Upload Variables CSV File 2
             inputs:
               script: |
                 unzip -o $(Build.BuildId)-csvfile2.zip
@@ -245,6 +248,7 @@ stages:
 
           # Run JMeter test suite against the App Service
           - task: CmdLine@2
+            displayName: Run JMeter Test Suite
             inputs:
               script: |
                 wget "https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.tgz"
@@ -257,6 +261,7 @@ stages:
           #--------------------------------------------#  
           # Upload Selenium demositelogin.py to workingDirectory: $(Pipeline.Workspace)/drop-uitests 
           - task: CmdLine@2
+            displayName: Upload Selenium demositelogin.py
             inputs:
               script: |
                 unzip -o $(Build.BuildId)-uitests.zip
@@ -281,6 +286,7 @@ stages:
   #           artifact: drop-ui-tests     # ToDo: Change/provide a name
             
           - task: Bash@3
+            displayName: Selenium Functional UI Tests
             inputs:
               targetType: 'inline'
               script: |           
@@ -303,7 +309,7 @@ stages:
                 if [ ! -f "$FILE" ]; then
                     # LATEST=$(wget -q -O - http://chromedriver.storage.googleapis.com/LATEST_RELEASE)
                     wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.102/linux64/chromedriver-linux64.zip
-                    unzip -o chromedriver_linux64.zip
+                    unzip -o chromedriver-linux64.zip
                     sudo ln -s $PWD/chromedriver /usr/local/bin/chromedriver
                 fi
                 export PATH=$PATH:/home/testuser/app
