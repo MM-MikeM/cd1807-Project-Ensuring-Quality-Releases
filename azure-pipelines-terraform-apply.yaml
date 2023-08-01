@@ -299,6 +299,6 @@ stages:
                 fi
                 export PATH=$PATH:/home/testuser/app
                 echo "Starting Selenium Tests"
-                python3 demositelogin.py >> selenium.log
+                python3 /home/vsts/work/1/drop-uitests/demositelogin.py >> selenium.log
                 echo "Completed Selenium Tests. Check selenium.log for results."    
               workingDirectory: $(Pipeline.Workspace)/drop-uitests          # ToDo: Use the artifact name from the task above                          
