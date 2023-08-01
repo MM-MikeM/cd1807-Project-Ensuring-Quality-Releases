@@ -128,7 +128,7 @@ stages:
         mergeTestResults: true
         testRunTitle: 'TestSuite Results - $(testRunDate) UTC' # ToDo
 
-#--------------------------------------------#
+          #--------------------------------------------#
     # Selenium (UI) Test Suite - Archive the package  
     # "ArchiveFiles@2" picks up the web package and archives it.
     - task: ArchiveFiles@2
@@ -172,7 +172,7 @@ stages:
       displayName: 'Upload Package'
       artifact: drop-perftests
 
-                #--------------------------------------------#  
+          #--------------------------------------------#  
     # JMeter (Performance) Test Suite - Archive
     # ToDo: Complete the ArchiveFiles@2 task and publish step 
     - task: ArchiveFiles@2
@@ -225,6 +225,7 @@ stages:
               appName: 'myApplication-mm-AppSvc'               # ToDo
               appType: 'webApp'
               package: '$(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip'       # ToDo: Use the published zip artifact.
+          
           #--------------------------------------------#  
           # Upload CSV File 1 to workingDirectory: $(Pipeline.Workspace)/drop-csvfile1
           - task: CmdLine@2
@@ -244,6 +245,7 @@ stages:
                 unzip -o $(Build.BuildId)-csvfile2.zip
 
               workingDirectory: $(Pipeline.Workspace)/drop-csvfile2           # ToDo: Use the artifact name from the task above
+          
           #--------------------------------------------#   
 
           # Run JMeter test suite against the App Service
@@ -317,4 +319,4 @@ stages:
                 python3 /home/vsts/work/1/drop-uitests/demositelogin.py >> selenium.log
                 echo "Completed Selenium Tests. Check selenium.log for results."    
                 cat selenium.log
-              # workingDirectory: $(Pipeline.Workspace)/drop-uitests          # ToDo: Use the artifact name from the task above                          
+                         
