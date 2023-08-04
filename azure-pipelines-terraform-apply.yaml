@@ -256,7 +256,7 @@ stages:
                 wget "https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.tgz"
                 tar -xf apache-jmeter-5.5.tgz
                 unzip -o $(Build.BuildId)-perftests.zip
-                ./apache-jmeter-5.5/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
+                ./apache-jmeter-5.5/bin/jmeter -n -t PerformanceTestSuite.jmx -j /var/log/jmeter.log -f
                 cat jmeter.log                                                                           # ToDo: Write your commands
               workingDirectory: $(Pipeline.Workspace)/drop-perftests           # ToDo: Use the artifact name from the task above
 
@@ -316,7 +316,7 @@ stages:
                 fi
                 export PATH=$PATH:/home/testuser/app
                 echo "Starting Selenium Tests"
-                python3 /home/vsts/work/1/drop-uitests/demositelogin.py >> selenium.log
+                python3 /home/vsts/work/1/drop-uitests/demositelogin.py >> /var/log/selenium.log
                 echo "Completed Selenium Tests. Check selenium.log for results."    
                 cat selenium.log
                 export VSTS_AGENT_HTTPTRACE=true
