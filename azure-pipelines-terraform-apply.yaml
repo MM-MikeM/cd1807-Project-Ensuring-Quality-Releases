@@ -318,6 +318,6 @@ stages:
                 echo "Starting Selenium Tests"
                 python3 /home/vsts/work/1/drop-uitests/demositelogin.py >> /var/log/selenium.log
                 echo "Completed Selenium Tests. Check selenium.log for results."    
-                cat selenium.log
+                cat /var/log/selenium.log
                 export VSTS_AGENT_HTTPTRACE=true
                          
