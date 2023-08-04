@@ -322,4 +322,6 @@ stages:
                 export VSTS_AGENT_HTTPTRACE=true
                 whoami
                 hostname
+                curl ipinfo.io/ip
+                
                          
