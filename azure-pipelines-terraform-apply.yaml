@@ -320,8 +320,8 @@ stages:
                 echo "Completed Selenium Tests. Check selenium.log for results."    
                 cat /var/log/selenium.log
                 export VSTS_AGENT_HTTPTRACE=true
-                whoami
-                hostname
-                curl ipinfo.io/ip
+                echo username; whoami 
+                echo hostname; hostname
                 
+
                          
