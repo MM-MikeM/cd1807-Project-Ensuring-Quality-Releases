@@ -8,7 +8,7 @@ trigger:
 
 # ToDo: Replace the agent pool name, if you are using Udacity Cloud lab. 
 # Otherwise, comment out the line below. 
-# pool: myAgentPool
+pool: mmAgentPool
 
 variables:
   python.version: '3.7.6'
@@ -211,7 +211,7 @@ stages:
   # Deploy FakeRestAPI Web App
   # ToDo: Provide <environment name> you created in your DevOps project
   - deployment: FakeRestAPI
-    pool:
+    pool: 'mmAgentPool'
       vmImage: 'ubuntu-latest'      
     environment: 'udacityTrainMsDevOps-vm-env'   # ToDo
     strategy:
