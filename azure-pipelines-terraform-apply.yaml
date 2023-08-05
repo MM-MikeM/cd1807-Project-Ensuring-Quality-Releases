@@ -8,7 +8,7 @@ trigger:
 
 # ToDo: Replace the agent pool name, if you are using Udacity Cloud lab. 
 # Otherwise, comment out the line below. 
-# pool: mmAgentPool
+pool: mmAgentPool
 
 variables:
   python.version: '3.7.6'
@@ -26,6 +26,7 @@ stages:
 - stage: Build
   jobs:
   - job: BuildInfrastructure
+    pool: mmAgentPool
     steps:
     - script: |
         echo "##vso[task.setvariable variable=testRunDate;]$(date +%Y%m%d-%H%M%S)"
