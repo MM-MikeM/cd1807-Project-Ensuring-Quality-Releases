@@ -313,7 +313,7 @@ stages:
                     # LATEST=$(wget -q -O - http://chromedriver.storage.googleapis.com/LATEST_RELEASE)
                     wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chromedriver-linux64.zip
                     unzip -o chromedriver-linux64.zip
-                    sudo ln -s $PWD/chromedriver /usr/local/bin/chromedriver
+                    sudo ln -s $PWD/app/chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
                 fi
                 export PATH=$PATH:/home/adminuser/app
                 echo "Starting Selenium Tests"
