@@ -211,8 +211,8 @@ stages:
   # Deploy FakeRestAPI Web App
   # ToDo: Provide <environment name> you created in your DevOps project
   - deployment: FakeRestAPI
-    pool: 'mmAgentPool'
-      vmImage: 'UdacityDevOpsSelfHostedAgent-vm      
+    pool:
+      vmImage: 'ubuntu-latest'      
     environment: 'udacityTrainMsDevOps-vm-env'   # ToDo
     strategy:
       runOnce:
