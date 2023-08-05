@@ -317,7 +317,7 @@ stages:
                 fi
                 export PATH=$PATH:/home/adminuser/app
                 echo "Starting Selenium Tests"
-                sudo python3 demositelogin.py >> /var/log/udacityprjt3logs/selenium.log
+                sudo python3 /home/adminuser/app/demositelogin.py >> /var/log/udacityprjt3logs/selenium.log
                 echo "Completed Selenium Tests. Check selenium.log for results."    
                 cat /var/log/udacityprjt3logs/selenium.log
                 # export VSTS_AGENT_HTTPTRACE=true
