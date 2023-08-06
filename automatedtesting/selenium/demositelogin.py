@@ -1,14 +1,22 @@
 # #!/usr/bin/env python
 import time
+import datetime
 from selenium import webdriver
 #from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 
-# Initiate the chromedriver with code to remove logging errors
+# Initiate the chromedriver with code to run headless and remove logging errors
 options = webdriver.ChromeOptions()
-options.add_argument("--headless") 
+options.add_argument("--headless")
+options.add_argument("--no-sandbox")
+options.add_argument('--disable-dev-shm-usage')
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 driver = webdriver.Chrome(options=options)
+
+# Print date and time
+current_datetime = datetime.datetime.now()
+print("Current date and time:", current_datetime)
 
 # Maximize the window
 driver.maximize_window()
@@ -18,7 +26,7 @@ URL = 'https://www.saucedemo.com'
 print('Navigating to the ' + URL + ' demo website.')
 driver.get(URL)
 
-print('Entering user sign-in credentials.')
+print('Entering standard_user user sign-in credentials.')
 
 # Find the username field, clear it and enter the demo www.saucedemo.com 'standard_user' username
 username_field = driver.find_element(By.ID, 'user-name')
