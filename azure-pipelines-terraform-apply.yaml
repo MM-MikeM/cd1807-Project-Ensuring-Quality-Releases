@@ -141,7 +141,7 @@ stages:
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-uitests.zip'
     # Selenium Test Suite - Publish the package  
     - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-uitests.zip   # Same as the archiveFile artifact above. 
-      displayName: 'Upload Package'
+      displayName: 'Upload uitests.zip Package'
       artifact: drop-uitests
       
           #--------------------------------------------#    
@@ -155,7 +155,7 @@ stages:
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'
     - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip
-      displayName: 'Upload Package'
+      displayName: 'Upload fakerestapi.zip Package'
       artifact: drop-fakerestapi
 
           #--------------------------------------------#  
@@ -170,7 +170,7 @@ stages:
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-perftests.zip'
     # JMeter Test Suite - Publish    
     - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-perftests.zip
-      displayName: 'Upload Package'
+      displayName: 'Upload perftests.zip Package'
       artifact: drop-perftests
 
           #--------------------------------------------#  
@@ -185,7 +185,7 @@ stages:
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-csvfile1.zip'
     # JMeter Test Suite - Publish    
     - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-csvfile1.zip
-      displayName: 'Upload Package'
+      displayName: 'Upload csvfile1.zip Package'
       artifact: drop-csvfile1
 
           #--------------------------------------------#  
@@ -200,7 +200,7 @@ stages:
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-csvfile2.zip'
     # JMeter Test Suite - Publish    
     - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-csvfile2.zip
-      displayName: 'Upload Package'
+      displayName: 'Upload csvfile2.zip Package'
       artifact: drop-csvfile2
 
 #--------------------------------------------#  
@@ -257,7 +257,7 @@ stages:
             inputs:
               script: |
                 wget "https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.tgz"
-                tar -xf apache-jmeter-5.5.tgz
+                tar -xf apache-jmeter-5.5.tgz > /dev/null
                 unzip -o $(Build.BuildId)-perftests.zip
                 ./apache-jmeter-5.5/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
                 cat jmeter.log                                                                           # ToDo: Write your commands
@@ -311,14 +311,14 @@ stages:
 
                 # Install Google Chrome.
                 wget -O google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-                sudo dpkg -i google-chrome-stable_current_amd64.deb
+                sudo dpkg -i google-chrome-stable_current_amd64.deb > /dev/null
 
                 # If there are any dependency errors, fix them with:
                 sudo apt --fix-broken install
 
                 # Install ChromeDriver - Replace URL with latest found at https://googlechromelabs.github.io/chrome-for-testing/
                 wget -O chromedriver-linux64.zip https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chromedriver-linux64.zip
-                unzip chromedriver-linux64.zip
+                unzip chromedriver-linux64.zip > /dev/null
                 sudo ln -s $PWD/chromedriver-linux64 /usr/local/bin/chromedriver-linux64
 
                 # Move chromedriver to a directory in the system PATH and make executable.
