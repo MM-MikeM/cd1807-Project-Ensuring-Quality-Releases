@@ -59,6 +59,7 @@ items = [
 
 for item in items:
     add_to_cart_button = driver.find_element(By.ID, item)
+    print(item)
     time.sleep(1)
     add_to_cart_button.click()
 
@@ -69,16 +70,17 @@ print('Removing the 6 shoping items from the shopping cart.')
 
 # Loop: remove each of the 6 shoping items from the shopping cart with a one second pause for each
 remove_items = [
-    'remove-sauce-labs-backpack',
-    'remove-sauce-labs-bolt-t-shirt',
-    'remove-sauce-labs-onesie',
-    'remove-sauce-labs-bike-light',
-    'remove-sauce-labs-fleece-jacket',
-    'remove-test.allthethings()-t-shirt-(red)'
+    'remove-from-cart-sauce-labs-backpack',
+    'remove-from-cart-sauce-labs-bolt-t-shirt',
+    'remove-from-cart-labs-onesie',
+    'remove-from-cart-sauce-labs-bike-light',
+    'remove-from-cart-sauce-labs-fleece-jacket',
+    'remove-from-cart-test.allthethings()-t-shirt-(red)'
 ]
 
 for remove_item in remove_items:
     remove_from_cart_button = driver.find_element(By.ID, remove_item)
+    print(remove_item)
     time.sleep(1)
     remove_from_cart_button.click()
 
