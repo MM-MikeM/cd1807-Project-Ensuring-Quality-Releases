@@ -246,8 +246,8 @@ stages:
               script: |
                 unzip -o $(Build.BuildId)-csvfile2.zip
 
-              #workingDirectory: $(Pipeline.Workspace)/drop-csvfile2           # ToDo: Use the artifact name from the task above
-              workingDirectory: $(Pipeline.Workspace)/drop-perftests          # ToDo: Use the artifact name from the task above
+              workingDirectory: $(Pipeline.Workspace)/drop-csvfile2           # ToDo: Use the artifact name from the task above
+
           
           #--------------------------------------------#   
 
