@@ -338,7 +338,7 @@ stages:
             
                 export PATH=$PATH:/home/adminuser/app
                 echo "Starting Selenium Tests"
-                sudo python3 /$DIR/demositelogin.py >> /$DIR/logs/selenium.log
+                sudo python3 /$DIR/demositelogin.py > /$DIR/logs/selenium.log
                 echo "Completed Selenium Tests. Check selenium.log for results."    
                 cat /home/adminuser/app/logs/selenium.log
                 # export VSTS_AGENT_HTTPTRACE=true
