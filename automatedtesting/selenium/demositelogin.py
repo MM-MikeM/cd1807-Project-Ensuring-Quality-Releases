@@ -70,12 +70,12 @@ print('Removing the 6 shoping items from the shopping cart.')
 
 # Loop: remove each of the 6 shoping items from the shopping cart with a one second pause for each
 remove_items = [
-    'remove-from-cart-sauce-labs-backpack',
-    'remove-from-cart-sauce-labs-bolt-t-shirt',
-    'remove-from-cart-labs-onesie',
-    'remove-from-cart-sauce-labs-bike-light',
-    'remove-from-cart-sauce-labs-fleece-jacket',
-    'remove-from-cart-test.allthethings()-t-shirt-(red)'
+    'remove-sauce-labs-backpack',
+    'remove-sauce-labs-bolt-t-shirt',
+    'remove-sauce-labs-onesie',
+    'remove-sauce-labs-bike-light',
+    'remove-sauce-labs-fleece-jacket',
+    'remove-test.allthethings()-t-shirt-(red)'
 ]
 
 for remove_item in remove_items:
